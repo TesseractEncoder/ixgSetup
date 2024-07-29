@@ -1,0 +1,24 @@
+name: Run Install Script
+
+on:
+  push:
+    branches:
+      - main  # Adjust the branch name as needed
+  pull_request:
+    branches:
+      - main  # Adjust the branch name as needed
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up execution permissions for install script
+      run: chmod +x ./install.sh
+
+    - name: Run install script
+      run: sudo ./install.sh
+
